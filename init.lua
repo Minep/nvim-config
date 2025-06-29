@@ -1,5 +1,7 @@
 require("config.lazy")
 
+vim.api.nvim_set_option("clipboard", "unnamed")
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -9,6 +11,11 @@ vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
 vim.smarttab = true
 vim.bo.expandtab = true
+
+
+--if vim.fn.getcwd() == "/home/lxsky/projects/negative-97-tex" then
+--	vim.go.columns = 150
+--end
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
@@ -21,7 +28,7 @@ local cmp_caps = cmplsp.default_capabilities()
 
 require("nvim-tree").setup({
 	view = {
-		width = 40
+		width = 30
 	}
 })
 
@@ -42,6 +49,7 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
         	['<C-d>'] = cmp.mapping.scroll_docs(-4),
         	['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-e>'] = cmp.mapping.abort(),
         	['<C-Space>'] = cmp.mapping.complete(),
         	['<CR>'] = cmp.mapping.confirm({ select = true }),
 	}),
@@ -126,3 +134,17 @@ vim.keymap.set('n', '<leader>fd', function()
 	builtin.lsp_document_symbols({ symbols='function' })
 end, { desc = "List functions" })
 
+vim.keymap.set({'n', 'v'}, '<Del>', '"_x')
+
+vim.keymap.set({'n', 'v'}, '<S-Up>', '<Up>')
+vim.keymap.set({'n', 'v'}, '<S-Down>', '<Down>')
+vim.keymap.set({'n', 'v'}, '<Up>', 'gk')
+vim.keymap.set({'n', 'v'}, '<Down>', 'gj')
+
+vim.keymap.set({'i'}, '<S-Up>', '<Up>')
+vim.keymap.set({'i'}, '<S-Down>', '<Down>')
+vim.keymap.set({'i'}, '<Up>', '<C-o>gk')
+vim.keymap.set({'i'}, '<Down>', '<C-o>gj')
+
+vim.keymap.set({'n'}, '\\[', '<C-o>')
+vim.keymap.set({'n'}, '\\]', '<C-i>')
