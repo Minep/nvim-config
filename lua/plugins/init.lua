@@ -24,6 +24,11 @@ return {
 	"nvim-tree/nvim-tree.lua",
 
 	{
+		"xiyaowong/transparent.nvim",
+		lazy = false
+	},
+
+	{
 		'sainnhe/everforest',
 		lazy = false,
 		priority = 1000,

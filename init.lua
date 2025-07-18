@@ -26,6 +26,13 @@ local cmplsp = require("cmp_nvim_lsp")
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 local cmp_caps = cmplsp.default_capabilities()
 
+require("transparent").setup({
+	extra_groups = {
+		"NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+		"NvimTreeNormal" -- NvimTree
+	}
+})
+
 require("nvim-tree").setup({
 	view = {
 		width = 30
