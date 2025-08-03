@@ -24,19 +24,38 @@ return {
 	"nvim-tree/nvim-tree.lua",
 
 	{
-		"xiyaowong/transparent.nvim",
-		lazy = false
+	    "folke/todo-comments.nvim",
+	    dependencies = { "nvim-lua/plenary.nvim" },
+	    opts = {
+		    -- your configuration comes here
+		    -- or leave it empty to use the default settings
+		    -- refer to the configuration section below
+	    }
 	},
 
 	{
-		'sainnhe/everforest',
-		lazy = false,
-		priority = 1000,
-		config = function()
-        		-- Optionally configure and load the colorscheme
-        		-- directly inside the plugin declaration.
-        		vim.g.everforest_enable_italic = true
-        		vim.cmd.colorscheme('everforest')
-      		end
-    	},
+	  "folke/trouble.nvim",
+	  opts = {}, -- for default options, refer to the configuration section for custom setup.
+	  cmd = "Trouble",
+	},
+
+	{
+	  "folke/which-key.nvim",
+	  event = "VeryLazy",
+	  opts = {
+	    -- your configuration comes here
+	    -- or leave it empty to use the default settings
+	    -- refer to the configuration section below
+	  },
+	  keys = {
+	    {
+	      "<leader>?",
+	      function()
+		require("which-key").show({ global = false })
+	      end,
+	      desc = "Buffer Local Keymaps (which-key)",
+	    },
+	  },
+	},
+	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 }
